@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { 
   Package, 
-  Truck, 
   Search, 
-  LayoutDashboard, 
   PlusCircle, 
   FileText, 
-  Settings, 
   LogOut, 
   Menu, 
   X, 
@@ -14,15 +11,10 @@ import {
   DollarSign, 
   ShieldCheck, 
   Clock, 
-  MapPin, 
-  Phone,
-  User,
-  Users,
-  BarChart3,
-  CreditCard,
-  CheckCircle2,
-  AlertCircle,
-  HelpCircle,
+  CheckCircle2, 
+  AlertCircle, 
+  Users, 
+  Settings,
   MessageSquare
 } from 'lucide-react';
 
@@ -483,7 +475,7 @@ const CustomerDashboard = ({ user, packages, onPreAlert, setPage }) => {
                 trackingNumber: formData.get('tracking'),
                 merchant: formData.get('merchant'),
                 description: formData.get('desc'),
-                valueUSD: parseFloat(formData.get('value')),
+                valueUSD: parseFloat(formData.get('value') || '0'),
                 category: formData.get('category'),
               });
               setShowPreAlert(false);
@@ -686,7 +678,7 @@ export default function App() {
   ]);
   const [rates, setRates] = useState(INITIAL_RATES);
 
-  const handleAuth = ({ email, password, name, type }) => {
+  const handleAuth = ({ email, name, type }) => {
     if (type === 'login') {
       const found = users.find(u => u.email === email);
       if (found) {
@@ -831,7 +823,7 @@ export default function App() {
             <ul className="space-y-2 text-slate-500 text-sm">
               <li>Help Center</li>
               <li>FAQ</li>
-              <li className="flex items-center"><Phone className="h-4 w-4 mr-2" /> +1 (876) 555-4321</li>
+              <li className="flex items-center"><Clock className="h-4 w-4 mr-2" /> 9am - 5pm</li>
             </ul>
           </div>
         </div>
